@@ -1,3 +1,6 @@
 package entities
 
-type Characters struct{}
+type Characters struct {
+	Name string
+	Race Race
+}

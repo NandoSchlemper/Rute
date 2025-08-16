@@ -1,3 +1,5 @@
 package entities
 
-type Dialogues struct{}
+type Dialogues struct {
+	Character Characters
+}
