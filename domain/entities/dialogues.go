@@ -1,5 +1,5 @@
 package entities
 
-type Dialogues struct {
-	Character Characters
+type Dialogue struct {
+	Character Character
 }

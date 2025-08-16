@@ -1,6 +1,13 @@
 package entities
 
-type Characters struct {
-	Name string
-	Race Race
+type Character struct {
+	Name        string
+	Race        Race
+	Level       int
+	Age         int
+	Relatioship int
+}
+
+func NewCharacter() *Character {
+	return &Character{}
 }
