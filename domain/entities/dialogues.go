@@ -1,5 +1,6 @@
 package entities
 
 type Dialogue struct {
-	Character Character
+	Character Character // personagem do dialogo
+	Content   string    // conteudo do dialogo
 }
