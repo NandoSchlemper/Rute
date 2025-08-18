@@ -6,6 +6,7 @@ const (
 	CharacterFlagType FlagType = iota
 	LocalFlagType
 	GlobalFlagType
+	QuestFlagType
 )
 
 func (f FlagType) String() string {
