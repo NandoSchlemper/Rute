@@ -1,4 +1,4 @@
-package player
+package entities
 
 type ILevel interface {
 	addXp(xp int) // Verifica se vai upar de level tbm
