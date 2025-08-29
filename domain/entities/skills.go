@@ -1,20 +1,44 @@
 package entities
 
-type SkillType int
-
-const (
-	PASSIVE SkillType = iota
-	ACTIVE
-)
-
-type ISkillSystem interface {
-	getName() string
-	getType() SkillType
-	setName(name string)
-	setType(skill SkillType)
+type ISkill interface {
+	Use()
+	Description()
 }
 
-type SkillSystem struct {
-	Name string
-	Type SkillType
+type Skill struct {
+	Damage
+	Name   string
+	Origin SkillOrigin
+}
+
+// Description implements ISkill.
+func (s *Skill) Description() {
+	panic("unimplemented")
+}
+
+// Use implements ISkill.
+func (s *Skill) Use() {
+	panic("unimplemented")
+}
+
+func NewSkill(
+	baseDamage int,
+	attribute Attribute,
+	multiplier float64,
+	damageType DamageType,
+	target Target,
+	name string,
+	origin SkillOrigin,
+) ISkill {
+	return &Skill{
+		Damage: Damage{
+			Base:       baseDamage,
+			Attribute:  attribute,
+			Type:       damageType,
+			Multiplier: multiplier,
+			Target:     target,
+		},
+		Name:   name,
+		Origin: origin,
+	}
 }

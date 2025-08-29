@@ -1,0 +1,20 @@
+package entities
+
+type DamageType int
+
+const (
+	PIERCING DamageType = iota
+	BLUDGEONING
+	SLASHING
+	ACID
+	COLD
+	FIRE
+	FORCE
+	LIGHTNING
+	NECROTIC
+	POISON
+	PSYCHIC
+	RADIANT
+	THUNDER
+	NONE
+)

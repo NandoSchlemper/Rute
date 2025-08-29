@@ -2,21 +2,33 @@ package entities
 
 type IRaceSystem interface {
 	setName(name string)
-	setSkills(skills []ISkillSystem)   // struct p skills
-	setAttributes(atr AttributeSystem) // atributos da raça
+	setSkills(skills []ISkill)          // struct p skills
+	setAttributes(atr IAttributeSystem) // atributos da raça
 	getName() string
-	getSkills() []ISkillSystem // criar uma struct componente pra skills
-	getAttributes() AttributeSystem
+	getSkills() []ISkill // criar uma struct componente pra skills
+	getAttributes() IAttributeSystem
 }
 
 type RaceSystem struct {
 	Name       string
-	Skills     []ISkillSystem // criar uma struct componente para skills overall
-	Attributes AttributeSystem
+	Skills     []ISkill // criar uma struct componente para skills overall
+	Attributes IAttributeSystem
+}
+
+func NewRaceSystem(
+	name string,
+	skills []ISkill,
+	atributes IAttributeSystem,
+) IRaceSystem {
+	return &RaceSystem{
+		Name:       name,
+		Skills:     skills,
+		Attributes: atributes,
+	}
 }
 
 // getAttributes implements IRaceSystem.
-func (r *RaceSystem) getAttributes() AttributeSystem {
+func (r *RaceSystem) getAttributes() IAttributeSystem {
 	panic("unimplemented")
 }
 
@@ -26,12 +38,12 @@ func (r *RaceSystem) getName() string {
 }
 
 // getSkills implements IRaceSystem.
-func (r *RaceSystem) getSkills() []ISkillSystem {
+func (r *RaceSystem) getSkills() []ISkill {
 	panic("unimplemented")
 }
 
 // setAttributes implements IRaceSystem.
-func (r *RaceSystem) setAttributes(atr AttributeSystem) {
+func (r *RaceSystem) setAttributes(atr IAttributeSystem) {
 	panic("unimplemented")
 }
 
@@ -41,6 +53,6 @@ func (r *RaceSystem) setName(name string) {
 }
 
 // setSkills implements IRaceSystem.
-func (r *RaceSystem) setSkills(skills []ISkillSystem) {
+func (r *RaceSystem) setSkills(skills []ISkill) {
 	panic("unimplemented")
 }
