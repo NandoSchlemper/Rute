@@ -1,7 +1,8 @@
-package unitarytests
+package unitary_test
 
 import (
 	"log"
+	"testing"
 
 	"github.com/NandoSchlemper/rute/domain/entities"
 )
@@ -10,18 +11,9 @@ import (
 // 2. Testar se tudo está funcionando como deveria
 // 3. vida boa vida boa
 
-type IPlayerTesting interface {
-	TCriandoJogador()
-}
-
-type PlayerTesting struct{}
-
-func NewPlayerUnitaryTest() IPlayerTesting {
-	return &PlayerTesting{}
-}
-
-func (p *PlayerTesting) TCriandoJogador() {
+func TestCriandoJogador(t *testing.T) {
 	skillHuman1 := entities.NewSkill(
+		1,
 		1,
 		entities.CHARISMA,
 		0.2,

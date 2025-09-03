@@ -1,14 +1,28 @@
 package entities
 
 type ISkill interface {
-	Use()
+	// criar uma struct para os enemagos kekeke
+	Use(caster IPlayer, target int) error
 	Description()
+	Cost() int
+	CanCast() bool
 }
 
 type Skill struct {
 	Damage
 	Name   string
 	Origin SkillOrigin
+	Mp     int
+}
+
+// CanCast implements ISkill.
+func (s *Skill) CanCast() bool {
+	panic("unimplemented")
+}
+
+// Cost implements ISkill.
+func (s *Skill) Cost() int {
+	panic("unimplemented")
 }
 
 // Description implements ISkill.
@@ -17,12 +31,13 @@ func (s *Skill) Description() {
 }
 
 // Use implements ISkill.
-func (s *Skill) Use() {
+func (s *Skill) Use(caster IPlayer, target int) error {
 	panic("unimplemented")
 }
 
 func NewSkill(
 	baseDamage int,
+	mpCost int,
 	attribute Attribute,
 	multiplier float64,
 	damageType DamageType,
@@ -40,5 +55,6 @@ func NewSkill(
 		},
 		Name:   name,
 		Origin: origin,
+		Mp:     mpCost,
 	}
 }
