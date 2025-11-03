@@ -1,0 +1,73 @@
+package components
+
+templ Game() {
+	<!DOCTYPE html>
+	<html lang="pt-BR">
+		<head>
+			<title>Jogo Top-Down</title>
+			<style>
+				body {
+					margin: 0;
+					overflow: hidden;
+					background-color: #222;
+				}
+				
+				#gameContainer {
+					position: relative;
+					width: 100vw;
+					height: 100vh;
+				}
+				
+				#player {
+					position: absolute;
+					width: 50px;
+					height: 50px;
+					background-color: #f00;
+					border-radius: 50%;
+					transition: top 0.1s, left 0.1s;
+				}
+			</style>
+		</head>
+		<body>
+			<div id="gameContainer">
+				<div id="player"></div>
+			</div>
+			<script>
+				const player = document.getElementById('player');
+				const speed = 5;
+				let posX = window.innerWidth / 2;
+				let posY = window.innerHeight / 2;
+
+				player.style.left = posX + 'px';
+				player.style.top = posY + 'px';
+
+				const keys = {};
+
+				window.addEventListener('keydown', (e) => {
+					keys[e.key] = true;
+				});
+
+				window.addEventListener('keyup', (e) => {
+					keys[e.key] = false;
+				});
+
+				function gameLoop() {
+					if (keys['w'] || keys['W']) posY -= speed;
+					if (keys['s'] || keys['S']) posY += speed;
+					if (keys['a'] || keys['A']) posX -= speed;
+					if (keys['d'] || keys['D']) posX += speed;
+
+					posX = Math.max(0, Math.min(window.innerWidth - player.offsetWidth, posX));
+					posY = Math.max(0, Math.min(window.innerHeight - player.offsetHeight, posY));
+
+					player.style.left = posX + 'px';
+					player.style.top = posY + 'px';
+
+					requestAnimationFrame(gameLoop);
+				}
+
+				gameLoop();
+			</script>
+		</body>
+	</html>
+}
