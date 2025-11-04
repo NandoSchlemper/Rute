@@ -20,7 +20,10 @@
 		],
 		"fabric-datagen": [
 			"bekanius.mod.ShinobiForgottenTalesDataGenerator"
-		]
+		],
+        "client": [
+          "bekanius.mod.ShinobiForgottenTalesClient"
+        ]
 	},
 	"mixins": [
 		"shinobi-forgotten-tales.mixins.json"
