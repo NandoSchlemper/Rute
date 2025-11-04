@@ -10,6 +10,7 @@ import java.util.Map;
 public class ChakraServer {
     private static final Map<PlayerEntity, Integer> playerChakra = new HashMap<>();
 
+
     public static void register() {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             playerChakra.put(handler.player, 100);
